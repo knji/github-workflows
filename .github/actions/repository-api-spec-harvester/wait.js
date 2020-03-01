@@ -36,32 +36,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core = require("@actions/core");
-var wait_1 = require("./wait");
-function run() {
+function wait(milliseconds) {
     return __awaiter(this, void 0, void 0, function () {
-        var ms, error_1;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    console.debug("Attempting to use Typescript....");
-                    ms = core.getInput('milliseconds');
-                    core.debug("Waiting " + ms + " milliseconds ...");
-                    core.debug(new Date().toTimeString());
-                    return [4 /*yield*/, wait_1.wait(parseInt(ms, 10))];
-                case 1:
-                    _a.sent();
-                    core.debug(new Date().toTimeString());
-                    core.setOutput('time', new Date().toTimeString());
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_1 = _a.sent();
-                    core.setFailed(error_1.message);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
+            return [2 /*return*/, new Promise(function (resolve) {
+                    if (isNaN(milliseconds)) {
+                        throw new Error('milliseconds not a number');
+                    }
+                    setTimeout(function () { return resolve('done!'); }, milliseconds);
+                })];
         });
     });
 }
-run();
+exports.wait = wait;
