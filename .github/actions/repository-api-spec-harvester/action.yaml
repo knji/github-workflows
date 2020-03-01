@@ -2,12 +2,12 @@ name: 'Scan for API Specifications'
 description: 'Scan Github for API specifications'
 inputs:
   who-to-greet:  # id of input
-    description: 'Who to greet'
+    description: 'Trying to scan private repositories in an organization'
     required: true
     default: 'World'
 outputs:
   time: # id of output
-    description: 'The time we greeted you'
+    description: 'The list of repositories we found'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'index.ts'
