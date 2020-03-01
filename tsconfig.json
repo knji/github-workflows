@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
-    "outDir": "./lib",
+    "outDir": "./.github/actions/repository-api-spec-harvester",
     "strict": true
   },
   "include": ["src", ".github/actions"],

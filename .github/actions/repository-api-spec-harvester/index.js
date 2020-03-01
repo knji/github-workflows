@@ -38,6 +38,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core = require("@actions/core");
 var wait_1 = require("./wait");
+exports.Greeter = function (name) { return "Hello " + name; };
+exports.doSomething = function () {
+    console.debug("Attempting to use Typescript....");
+    var ms = core.getInput('milliseconds');
+    core.debug("Waiting " + ms + " milliseconds ...");
+    return "done";
+};
 function run() {
     return __awaiter(this, void 0, void 0, function () {
         var ms, error_1;
