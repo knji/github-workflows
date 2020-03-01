@@ -10,4 +10,4 @@ outputs:
     description: 'The list of repositories we found'
 runs:
   using: 'node12'
-  main: 'index1.js'
+  main: 'index.js'
