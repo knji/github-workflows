@@ -40,8 +40,11 @@ var core = require("@actions/core");
 var wait_1 = require("./wait");
 exports.Greeter = function (name) { return "Hello " + name; };
 exports.doSomething = function () {
-    console.debug("Attempting to use Typescript....");
+    console.debug("running doSomething in Typescript....");
     var ms = core.getInput('milliseconds');
+    if (ms == "") {
+        ms = "1000";
+    }
     core.debug("Waiting " + ms + " milliseconds ...");
     return "done";
 };
@@ -54,12 +57,15 @@ function run() {
                     _a.trys.push([0, 2, , 3]);
                     console.debug("Attempting to use Typescript....");
                     ms = core.getInput('milliseconds');
+                    if (ms == "") {
+                        ms = "100";
+                    }
                     core.debug("Waiting " + ms + " milliseconds ...");
-                    core.debug(new Date().toTimeString());
+                    core.debug("Starting to parse ms at " + new Date().toTimeString());
                     return [4 /*yield*/, wait_1.wait(parseInt(ms, 10))];
                 case 1:
                     _a.sent();
-                    core.debug(new Date().toTimeString());
+                    core.debug("Completed parsing ms at:" + new Date().toTimeString());
                     core.setOutput('time', new Date().toTimeString());
                     return [3 /*break*/, 3];
                 case 2:
