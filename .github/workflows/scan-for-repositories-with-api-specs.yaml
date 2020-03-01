@@ -4,16 +4,16 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to scan Github repositories for APi Specifications.  These are repositories with api-spec-metadata.yml
     steps:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Scan Github Repositories
         uses: ./.github/actions/repository-api-spec-harvester # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: 'God is good'
       # Use the output from the `hello` step
-      - name: Get the output time
+      - name: List the repositories we found with API specifications
         run: echo "The time was ${{ steps.hello.outputs.time }}"
