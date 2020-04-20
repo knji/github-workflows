@@ -20,7 +20,7 @@ export async function run(): Promise<void> {
         //console.debug("some-key" + core.getInput("stoplight-api-key"))
 
         console.debug("Starting to parse ms at " + new Date().toTimeString())
-        await wait(parseInt(ms, 30000))
+        await wait(parseInt(ms, 9000))
         console.debug("Completed parsing ms at:" + new Date().toTimeString())
 
         core.setOutput('time', new Date().toTimeString())
