@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core = require("@actions/core");
+var request = require("request-promise-native");
 var wait_1 = require("./wait");
 //https://github.com/marketplace/actions/publish-api-doc-on-apitree
 function run() {
@@ -45,7 +46,7 @@ function run() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
+                    _a.trys.push([0, 3, , 4]);
                     console.debug("Attempting to use Typescript in a promise...");
                     ms = core.getInput('milliseconds');
                     if (ms == "") {
@@ -59,18 +60,69 @@ function run() {
                     return [4 /*yield*/, wait_1.wait(30000)];
                 case 1:
                     _a.sent();
+                    return [4 /*yield*/, hasFileBeenPublished("sailpoint-v3-api")];
+                case 2:
+                    _a.sent();
                     console.debug("Completed parsing ms at:" + new Date().toTimeString());
                     core.setOutput('time', new Date().toTimeString());
-                    return [3 /*break*/, 3];
-                case 2:
+                    return [3 /*break*/, 4];
+                case 3:
                     error_1 = _a.sent();
                     core.setFailed(error_1.message);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });
 }
 exports.run = run;
+function hasFileBeenPublished(file) {
+    return __awaiter(this, void 0, void 0, function () {
+        var projectId, fileExists, fileInProjectUrl, getOptions, response, files, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!file) {
+                        throw new Error("Please provide a file for publication.");
+                    }
+                    projectId = core.getInput('stoplight-project-id');
+                    if (!projectId) {
+                        throw new Error("Please provide the project id associated with this publication.");
+                    }
+                    fileExists = false;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    fileInProjectUrl = "https://next-api.stoplight.io/projects/" + projectId + "/files";
+                    getOptions = {
+                        qs: { order_by: 'name', sort: 'asc' },
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: 'Bearer ' + core.getInput('STOPLIGHT_API_KEY')
+                        },
+                        json: true
+                    };
+                    return [4 /*yield*/, request.get(fileInProjectUrl, getOptions)];
+                case 2:
+                    response = _a.sent();
+                    files = response.data;
+                    files.forEach(function (fileDescriptor) {
+                        console.debug(fileDescriptor.id + ":" + fileDescriptor.name);
+                        if (fileDescriptor.name === file) {
+                            console.debug("File " + fileDescriptor.name + " already exist on server.");
+                            fileExists = true;
+                            return;
+                        }
+                    });
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_2 = _a.sent();
+                    console.error(error_2);
+                    throw error_2;
+                case 4: return [2 /*return*/, fileExists];
+            }
+        });
+    });
+}
 run();
 exports.default = run;

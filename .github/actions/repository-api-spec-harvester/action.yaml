@@ -8,6 +8,10 @@ inputs:
   stoplight-api-key:
     description: 'The Stoplight API key'
     required: true
+  stoplight-project-id: 
+    description : 'An external project identifier for this publication. Useful to distinguish between internal and external docs'
+    required : false
+    default : '30213'
 outputs:
   time: # id of output
     description: 'when we finished the scanning'

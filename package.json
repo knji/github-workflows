@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
-    "build": "tsc" 
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,9 @@
   "description": "",
   "dependencies": {
     "@actions/core": "^1.2.2",
-    "@actions/github": "^2.1.1"
+    "@actions/github": "^2.1.1",
+    "@types/request-promise-native": "^1.0.17",
+    "request-promise-native": "^1.0.8"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",
