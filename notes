@@ -5,3 +5,6 @@ https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package
 3. Install associated dependencies. 
 
 > Issue with TypeScript is how does the editor help you determine the dependencies available?
+
+Pushing to the Repo:
+git push https://'knji':'my-password'@github.com/knji/github-workflows.git

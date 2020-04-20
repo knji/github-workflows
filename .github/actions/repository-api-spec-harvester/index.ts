@@ -40,7 +40,7 @@ export async function readFiles() : Promise<string>{
           return "done";
 }
 
-export async function run(): Promise<void> {
+export function run(): void {
   try {
 
         console.debug("Attempting to use Typescript in a promise...")
@@ -53,7 +53,7 @@ export async function run(): Promise<void> {
         core.debug(`Waiting ${ms} milliseconds ...`)
 
         core.debug("Starting to parse ms at " + new Date().toTimeString())
-        await wait(parseInt(ms, 10))
+        //await wait(parseInt(ms, 10))
         core.debug("Completed parsing ms at:" + new Date().toTimeString())
 
         core.setOutput('time', new Date().toTimeString())
@@ -62,4 +62,5 @@ export async function run(): Promise<void> {
   }
 }
 
-//run()
+run()
+export default run

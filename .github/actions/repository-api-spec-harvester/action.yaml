@@ -10,7 +10,7 @@ inputs:
     required: true
 outputs:
   time: # id of output
-    description: 'The list of repositories we found'
+    description: 'when we finished the scanning'
 runs:
   using: 'node12'
   main: 'index.js'
