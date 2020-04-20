@@ -38,6 +38,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core = require("@actions/core");
 var wait_1 = require("./wait");
+var fs = require("fs");
+//https://github.com/marketplace/actions/publish-api-doc-on-apitree
 exports.Greeter = function (name) { return "Hello " + name; };
 exports.doSomething = function () {
     console.debug("running doSomething in Typescript....");
@@ -46,8 +48,34 @@ exports.doSomething = function () {
         ms = "1000";
     }
     core.debug("Waiting " + ms + " milliseconds ...");
+    var directory = ".";
+    fs.readdir(directory, function (err, files) {
+        files.forEach(function (file) {
+            //console.debug(file);
+        });
+    });
     return "done";
 };
+function readFiles() {
+    return __awaiter(this, void 0, void 0, function () {
+        var directory;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    directory = ".";
+                    return [4 /*yield*/, fs.readdir(directory, function (err, files) {
+                            files.forEach(function (file) {
+                                // console.debug(file);
+                            });
+                        })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/, "done"];
+            }
+        });
+    });
+}
+exports.readFiles = readFiles;
 function run() {
     return __awaiter(this, void 0, void 0, function () {
         var ms, error_1;
@@ -55,7 +83,7 @@ function run() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    console.debug("Attempting to use Typescript....");
+                    console.debug("Attempting to use Typescript in a promise...");
                     ms = core.getInput('milliseconds');
                     if (ms == "") {
                         ms = "100";
@@ -77,4 +105,5 @@ function run() {
         });
     });
 }
-run();
+exports.run = run;
+//run()

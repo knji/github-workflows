@@ -1,5 +1,8 @@
 import * as core from '@actions/core'
 import {wait} from './wait'
+import * as fs from "fs";
+
+//https://github.com/marketplace/actions/publish-api-doc-on-apitree
 
 export const Greeter = (name: string) => `Hello ${name}`; 
 export const doSomething = () => {
@@ -13,15 +16,34 @@ export const doSomething = () => {
 
             core.debug(`Waiting ${ms} milliseconds ...`)
     
+            var directory = ".";
+
+            fs.readdir(directory, (err, files) => {
+                  files.forEach(file => {
+                    //console.debug(file);
+                  });
+                }); 
            
       return "done";
 
 }
 
-async function run(): Promise<void> {
+
+export async function readFiles() : Promise<string>{
+      var directory = ".";
+      await fs.readdir(directory, (err, files) => {
+            files.forEach(file => {
+              // console.debug(file);
+            });
+          }); 
+
+          return "done";
+}
+
+export async function run(): Promise<void> {
   try {
 
-        console.debug("Attempting to use Typescript....")
+        console.debug("Attempting to use Typescript in a promise...")
         var ms = core.getInput('milliseconds')
 
         if (ms == ""){
@@ -40,4 +62,4 @@ async function run(): Promise<void> {
   }
 }
 
-run()
+//run()

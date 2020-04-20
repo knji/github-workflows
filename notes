@@ -1,2 +1,7 @@
 Use these notes to setup for Typescript 
 https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c
+
+2. Create your Typescript code.
+3. Install associated dependencies. 
+
+> Issue with TypeScript is how does the editor help you determine the dependencies available?

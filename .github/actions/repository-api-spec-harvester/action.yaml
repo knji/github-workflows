@@ -5,6 +5,9 @@ inputs:
     description: 'Trying to scan private repositories in an organization'
     required: true
     default: 'World'
+  stoplight-api-key:
+    description: 'The Stoplight API key'
+    required: true
 outputs:
   time: # id of output
     description: 'The list of repositories we found'

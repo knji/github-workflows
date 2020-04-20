@@ -14,6 +14,7 @@ jobs:
         id: hello
         with:
           who-to-greet: 'God is good'
+          stoplight-api-key:  ${{ secrets.STOPLIGHT_API_KEY }}
       # Use the output from the `hello` step
       - name: List the repositories we found with API specifications
         run: echo "The time was ${{ steps.hello.outputs.time }}"
