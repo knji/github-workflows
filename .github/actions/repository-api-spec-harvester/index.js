@@ -93,12 +93,13 @@ function hasFileBeenPublished(file) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
+                    console.debug("Attempting to list files in Stoplight project " + projectId);
                     fileInProjectUrl = "https://next-api.stoplight.io/projects/" + projectId + "/files";
                     getOptions = {
                         qs: { order_by: 'name', sort: 'asc' },
                         headers: {
                             'content-type': 'application/json',
-                            authorization: 'Bearer 12345' // + core.getInput('STOPLIGHT_API_KEY')
+                            authorization: 'Bearer ' + core.getInput('STOPLIGHT_API_KEY')
                         },
                         json: true
                     };
