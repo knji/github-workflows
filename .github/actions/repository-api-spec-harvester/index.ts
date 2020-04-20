@@ -53,6 +53,7 @@ export function run(): void {
         console.debug("Waiting ${ms} milliseconds.  Looks like core.debug does not work!!!")
         console.debug("Printing some inputs:")
         console.debug("who-to-greet:" + core.getInput("who-to-greet"))
+        console.debug("some-key" + core.getInput("stoplight-api-key"))
 
         core.debug("Starting to parse ms at " + new Date().toTimeString())
         //await wait(parseInt(ms, 10))
