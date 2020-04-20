@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function wait(milliseconds) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            console.debug("waiting for " + milliseconds + "milliseconds");
+            console.debug("waiting for " + milliseconds + " milliseconds");
             return [2 /*return*/, new Promise(function (resolve) {
                     if (isNaN(milliseconds)) {
                         throw new Error('milliseconds not a number');
