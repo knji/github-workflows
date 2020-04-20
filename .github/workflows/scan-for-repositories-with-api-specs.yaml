@@ -9,6 +9,19 @@ jobs:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node.js version ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Change to where we have defined package.json and download node dependencies
+        run : |
+          cd ./.github/actions/repository-api-spec-harvester 
+          npm install 
+          echo "currently in" $PWD
+          ls -a
+
       - name: Scan Github Repositories
         uses: ./.github/actions/repository-api-spec-harvester # Uses an action in the root directory
         id: hello
