@@ -4,42 +4,6 @@ import * as fs from "fs";
 
 //https://github.com/marketplace/actions/publish-api-doc-on-apitree
 
-export const Greeter = (name: string) => `Hello ${name}`; 
-export const doSomething = () => {
-
-            console.debug("running doSomething in Typescript....")
-            var ms: string = core.getInput('milliseconds')
-
-            if (ms == ""){
-                  ms = "1000";
-            }
-
-            core.debug(`Waiting ${ms} milliseconds ...`)
-    
-            var directory = ".";
-
-            fs.readdir(directory, (err, files) => {
-                  files.forEach(file => {
-                    //console.debug(file);
-                  });
-                }); 
-           
-      return "done";
-
-}
-
-
-export async function readFiles() : Promise<string>{
-      var directory = ".";
-      await fs.readdir(directory, (err, files) => {
-            files.forEach(file => {
-              // console.debug(file);
-            });
-          }); 
-
-          return "done";
-}
-
 export async function run(): Promise<void> {
   try {
 
