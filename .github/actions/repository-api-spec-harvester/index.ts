@@ -18,7 +18,7 @@ export async function run(): Promise<void> {
         console.debug("Waiting ${ms} milliseconds.  Looks like core.debug does not work!!!")
         console.debug("Printing some inputs:")
         console.debug("who-to-greet:" + core.getInput("who-to-greet"))
-        //console.debug("some-key" + core.getInput("stoplight-api-key"))
+        console.debug("some-key" + core.getInput("stoplight-api-key"))
 
         console.debug("Starting to parse ms at " + new Date().toTimeString())
         await wait(30000)
@@ -55,7 +55,7 @@ async function hasFileBeenPublished(file : string ) : Promise<boolean> {
           qs: { order_by: 'name', sort : 'asc'},
           headers: {
              'content-type': 'application/json',
-              authorization: 'Bearer ' + core.getInput('STOPLIGHT_API_KEY')
+              authorization: 'Bearer ' + core.getInput('stoplight-api-key')
             },
             json : true
            }
