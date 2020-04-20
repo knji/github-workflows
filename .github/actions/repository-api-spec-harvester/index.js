@@ -37,7 +37,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core = require("@actions/core");
-var wait_1 = require("./wait");
 var fs = require("fs");
 //https://github.com/marketplace/actions/publish-api-doc-on-apitree
 exports.Greeter = function (name) { return "Hello " + name; };
@@ -77,33 +76,22 @@ function readFiles() {
 }
 exports.readFiles = readFiles;
 function run() {
-    return __awaiter(this, void 0, void 0, function () {
-        var ms, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    console.debug("Attempting to use Typescript in a promise...");
-                    ms = core.getInput('milliseconds');
-                    if (ms == "") {
-                        ms = "100";
-                    }
-                    core.debug("Waiting " + ms + " milliseconds ...");
-                    core.debug("Starting to parse ms at " + new Date().toTimeString());
-                    return [4 /*yield*/, wait_1.wait(parseInt(ms, 10))];
-                case 1:
-                    _a.sent();
-                    core.debug("Completed parsing ms at:" + new Date().toTimeString());
-                    core.setOutput('time', new Date().toTimeString());
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_1 = _a.sent();
-                    core.setFailed(error_1.message);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
+    try {
+        console.debug("Attempting to use Typescript in a promise...");
+        var ms = core.getInput('milliseconds');
+        if (ms == "") {
+            ms = "100";
+        }
+        core.debug("Waiting " + ms + " milliseconds ...");
+        core.debug("Starting to parse ms at " + new Date().toTimeString());
+        //await wait(parseInt(ms, 10))
+        core.debug("Completed parsing ms at:" + new Date().toTimeString());
+        core.setOutput('time', new Date().toTimeString());
+    }
+    catch (error) {
+        core.setFailed(error.message);
+    }
 }
 exports.run = run;
-//run()
+run();
+exports.default = run;
