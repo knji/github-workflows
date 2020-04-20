@@ -13,7 +13,7 @@ jobs:
         uses: ./.github/actions/repository-api-spec-harvester # Uses an action in the root directory
         id: hello
         with:
-          who-to-greet: 'God is good'
+          who-to-greet: "Jason Stratham"
           stoplight-api-key:  ${{ secrets.STOPLIGHT_API_KEY }}
       # Use the output from the `hello` step
       - name: List the repositories we found with API specifications
