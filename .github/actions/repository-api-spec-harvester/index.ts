@@ -53,7 +53,7 @@ async function hasFileBeenPublished(file : string ) : Promise<boolean> {
           qs: { order_by: 'name', sort : 'asc'},
           headers: {
              'content-type': 'application/json',
-              authorization: 'Bearer ' + core.getInput('STOPLIGHT_API_KEY')
+              authorization: 'Bearer 12345' // + core.getInput('STOPLIGHT_API_KEY')
             },
             json : true
            }
