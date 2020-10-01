@@ -19,7 +19,7 @@
   "homepage": "https://github.com/knji/github-workflows#readme",
   "description": "",
   "dependencies": {
-    "@actions/core": "^1.2.2",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^2.1.1",
     "@types/request-promise-native": "^1.0.17",
     "request-promise-native": "^1.0.8"
